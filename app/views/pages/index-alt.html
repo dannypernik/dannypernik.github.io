@@ -1,0 +1,122 @@
+<!doctype html>
+
+{% load static %}
+
+<html class="no-js" lang="en">
+    <head>  
+        
+        {% include "./zaplings/head.html" %}
+        
+        <link rel="stylesheet" type="text/css" href="{% static "./slick/slick.css" %}"/>
+        <link rel="stylesheet" href="{% static "./font-awesome/css/font-awesome.min.css" %}">
+    
+    </head>
+    <body id="home">
+      
+        <div class="wrapper">
+            <div class="hide-for-small-only">
+                <div class="row two-margin-top">
+                    <div id="home-banner" class="centerText small-12 columns">
+                        <img src="{% static "./images/logo-banner.png" %}" width="500px" height="76px"/>
+                    </div>
+                </div>
+                <div class="row three-halves-margin-top">
+                    <div class="home-intro centerText">
+                        <p class="lead">We are a community of creators working together<br>
+                        to bring great ideas to life.</p>
+                        <p class="lead">Share ideas, get valuable feedback, and connect with people who can help make your dream real.</p>
+                        <h3 class="add-margin-bottom inline-title">Let’s create something.</h3>
+                            <div id="email-div"><div id="email-submit"><button type="submit" class="button round success half-margin-right">Join Zaplings</button><a href="{% url 'zaplings:our-dream' %}"><button class="button small light round">Our dream</button></a></div>
+                                <div id="home-email">
+                                    <input id="home-input" type="email" name="user-email" placeholder="Email address"/>
+                                </div>
+                            </div>
+                        <p class="half-margin-top aside">Or <a class="home-link" href="{% url 'zaplings:signup' %}">Log in</a>. We will never share your email with anyone.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="show-for-small-only">
+                <div class="row add-margin-top">
+                    <div class="centerText small-12 columns">
+                        <img src="{% static "./images/logo-mobile.png" %}" alt="Zaplings logo" width="132px" height="82px"/>
+
+                        <p class="three-halves-margin-top">We are a community of creators<br>
+                        working together to bring<br>
+                        great ideas to life.</p>
+                        <p>Share ideas, get valuable feedback,<br>
+                        and connect with people who can help<br>
+                        make your dream real.</p>
+                        <p class="add-margin-bottom lead">Let's create something.</p>
+                    </div>
+                </div>    
+                <div class="row centerText">
+                    <div class="small-11 small-centered columns">
+                        <input class="centerText" type="email" name="user-email" placeholder="Email address"/>
+                        <button type="submit" class="button round success half-margin-right">Join Zaplings</button><button class="button small light round">Our dream</button>
+                    </div>
+                    <div class="small-12 columns">
+                        <p class="aside half-margin-top"><!--Or <a class="home-link" href="{% url 'zaplings:signup' %}">Log in</a>. -->We will never share your email with anyone.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row add-margin-top">
+                <div class="relative-container medium-8 medium-centered columns">
+                    <div class="small-10 small-centered columns">
+                        <h5 class="centerText inline-title add-margin-left add-margin-bottom">Great ideas</h5>
+                        <!--<button id="home-idea" class="button round small light">Share yours</button>-->
+                    </div>
+                                        
+                    <div class="single-item small-10 small-centered columns">
+                        <div>
+                            <div class="small-4 columns">
+                                <img class="featured-images" src="{% static './images/featured-idea-1.png' %}" width="88px" alt="slide 1" />
+                            </div>
+                            <div class="small-8 columns">
+                                <p class="featured-title large">Thriving Creation</p>
+                                <p class="featured-description aside">First Kin's Domain in Texas</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="small-4 columns">
+                                <img class="featured-images" src="{% static './images/featured-idea-2.png' %}" width="88px" alt="slide 2" />
+                            </div>
+                            <div class="small-8 columns">
+                                <p class="featured-title large">Austin Food Forest</p>
+                                <p class="featured-description aside">Community growing in public parks</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="small-4 columns">
+                                <img class="featured-images" src="{% static './images/featured-idea-3.png' %}" width="88px" alt="slide 3" />
+                            </div>
+                            <div class="small-8 columns">
+                                <p class="featured-title large">The Wire</p>
+                                <p class="featured-description aside">Public gondola transit system</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="home-arrows">
+                        <div id="home-prev">
+                            <i class="fa fa-chevron-left"></i>
+                        </div>
+                        <div id="home-next">
+                            <i class="fa fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="push"></div>
+        </div>
+
+            <script src="{% static "./js/foundation.min.js" %}"></script>
+            <script type="text/javascript" src="{% static "./slick/slick.min.js" %}"></script> 
+            <script src="{% static "./js/home-slider.js" %}"></script>
+        
+        {% include "./zaplings/end-scripts.html" %}
+    </body>
+</html>

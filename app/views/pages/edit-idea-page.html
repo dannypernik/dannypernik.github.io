@@ -1,0 +1,317 @@
+<!doctype html>
+
+{% load static %}
+
+<html class="no-js" lang="en">
+	<head>	
+	
+		{% include "./zaplings/head.html" %}
+		
+  </head>
+  	<body>
+	  
+		<div class="wrapper">
+
+			{% include "./zaplings/header.html" %}
+
+			<!-- When image is added, idea-cover needs to be replaced with an image 250px tall and full screen width. (For mobile version - 1st "show-for-small-only" class below - image will be smaller.) I'd like to use imagedrag to move the visible portion of the image (just like Facebook's "Reposition cover image"). -->
+
+<!--		<div class="row full-width hide-for-small-only">
+				<div class="idea-cover light">
+					<img class="idea-image" src="{% static "./images/leaf-circle.png" %}" alt="Idea image" width="88px" height="88px"/>
+					<div class="centerText medium-6 small-centered columns">
+						<a href="#" data-reveal-id="change-cover-reveal"><button id="change-cover" class="button small round">Optional image and video</button></a>
+					</div>
+				</div> 
+			</div>-->
+		<form id="form-edit-idea-page">
+		{% csrf_token %}
+			<div class="row full-width hide-for-small-only">
+				<div class="medium-6 medium-offset-3 columns">
+					<img class="profile-image" src="{% static "./images/.png" %}" alt="Idea image" width="75px" height="75px"/>
+				</div>
+				<div class="medium-3 columns end">
+					<a href="#" data-reveal-id="change-image-reveal"><button class="change-image button small round light">Change image</button>
+				</div>
+			</div>
+
+<!--			<div class="row full-width show-for-small-only">
+				<div class="idea-cover-small light">
+					<img class="idea-image-small" src="{% static "./images/leaf-circle.png" %}" alt="Idea image" width="75px" height="75px"/>
+					<div class="centerText medium-6 small-centered columns">
+						<a href="#" data-reveal-id="change-cover-reveal"><button id="change-cover-small" class="button tiny round">Optional image and video</button></a>
+					</div>
+				</div>
+			</div>-->
+		
+			<div class="row add-margin-bottom show-for-small-only">
+				<img class="small-profile-image" src="{% static "./images/.png" %}" alt="Profile image" width="75px" height="75px"/>
+				<div class="small-12 centerText columns">
+					<a href="#" data-reveal-id="change-icon-reveal"><button class="button tiny round light">Change image</button></a>
+				</div>
+			</div>
+
+				<div class="row">
+					<div class="centerText medium-6 small-12 medium-offset-3 columns">
+						<input id="idea-title-input" name="idea-title-input"type="text" placeholder="Idea title" value="{{ idea.title }}"/>
+						<textarea id="idea-intro" rows="2" placeholder="Introduce {{ idea.title }} (100 character maximum)" value="{{ idea.description }}"/></textarea>
+						<input id="website-link" name="website-link" type="text" placeholder="www.yourwebsite.com (Optional)" value="{{ idea.website }}"/>
+						<!--<p class="no-margin-bottom">Ready for funding? <a href="#" data-reveal-id="crowdtilt-reveal"><button class="button small round">Try Crowdtilt</button></a></p>-->
+					<!-- Show only if Idea type = Music
+						<div class="centerText"><a href="#" data-reveal-id="music-reveal"><button class="button small round">Add music</button></a></div>-->
+					</div>	
+				</div>
+
+				<div class="row">
+					<div class="medium-8 small-12 medium-offset-2 columns">
+						<h4 class="section-header">What {{ idea.title }} offers</h4>
+						<textarea id="offer-text" rows="3" placeholder="What value does this idea provide?"/></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="medium-8 small-12 medium-offset-2 columns">
+						<label class="half-margin-right">Select relevant tags:</label>
+						<div id="selected-offers">
+						
+							<!-- Suggested tags for ideas = user's selected tags -->
+							<input id="offer-1" class="vis-hidden" type="checkbox" name="offer-tag[]" value="offer-tag-1">
+								<label class="tag button small light round" for="offer-1">offer tag 1</label>
+							<!--  end for -->
+						</div>
+						<input id="input-offers" name="input-offers" type="text" placeholder="Add more... (press return to add)"/>
+
+					<!--	<a class="add-more" href="offers.html"><button class="button tiny round light">Add more...</button></a>-->
+					</div>		
+				</div>
+
+				<div class="row">
+					<div class="medium-8 small-12 medium-offset-2 columns">		
+						<h4 class="section-header">What we love</h4>
+						<textarea id="love-text" rows="3" placeholder="Share to your heart's content"/></textarea>
+					</div>	
+				</div>
+
+				<!-- Suggested tags for ideas = user's selected tags -->		
+				<div class="row">
+					<div class="medium-8 small-12 medium-offset-2 columns">	
+						<label>Select relevant tags:</label>
+						<div id="selected-loves">
+							<!-- for user-selected love tags -->
+							<input id="love-1" class="vis-hidden" type="checkbox" name="love-tag[]" value="love-tag-1">
+								<label class="tag button small light round" for="love-1">love tag 1</label>
+							<!-- endfor -->
+						</div>
+
+						<input id="input-loves" name="input-loves" type="text" placeholder="Add more... (press return to add)"/>
+
+
+					<!--	<a class="add-more" href="loves.html"><button class="button tiny light round">Add more...</button></a>-->
+					</div>
+				</div>
+			
+				
+				<div class="row">
+					<div class="medium-8 small-12 medium-offset-2 columns">
+						<h4 class="section-header">What we need</h4>
+						<textarea id="need-text" name="need-text" value="" rows="3" placeholder="How can others help you create?"/></textarea>
+					</div>
+				</div>
+				
+				<!-- Suggested tags for ideas = user's selected tags -->
+											
+				<div class="row">
+					<div class="medium-8 small-12 medium-offset-2 columns">	
+						<label class="half-margin-right">Select relevant tags:</label>
+
+						<div id="selected-needs">
+
+						<!-- for user need tags -->
+							<input id="need-1" class="vis-hidden" type="checkbox" name="need-tag[]" value="need-tag-1">
+								<label class="tag button small round light" for="need-1">need tag 1</label>
+							<!-- end for -->
+						</div>
+								<input id="input-needs" name="input-needs" type="text" placeholder="Add more... (press return to add)"/>
+
+
+						<!--<a class="add-more" href="needs.html"><button class="button tiny round light">Add more...</button></a>-->
+					</div>		
+				</div>
+
+				<div class="row">
+					<div class="medium-8 small-12 medium-offset-2 columns">
+						<h4 class="section-header">Who we are</h4>
+
+						<div id="team-details">	
+							<h5>{{ user.firstname }}{{ user.lastname }}</h5>
+							<textarea id="team-intro-1" name="team-intro-1" placeholder="Introduce yourself and your role in the team" rows="3"></textarea>
+						</div>
+							<a href="#" id="add-team-member">Add team member</a>	
+					</div>
+				</div>
+				
+
+				<div class="centerText add-margin-top"><button type="submit" class="button success round">Save and view</button></div>
+			</form>
+			
+			<!--<div id="change-cover-reveal" class="reveal-modal" data-reveal>
+				<h3>Add cover image and video (optional)</h3>
+				<form id="change-cover-form">
+					<input type="file" id="cover-image" name="cover-image" class="add-margin-top"/>
+					<p class="add-margin-top no-margin-bottom aside">Introduce your idea by video (ideal length: 60-90 seconds)</p>
+					<input type="text" id="video-link" name="video-link" class="add-margin-top" placeholder="YouTube or Vimeo link" value=""/>
+					<button type="submit" class="add-margin-top button small round success">Save</button>
+					<button class="close-reveal-modal button small round light">Cancel</button>
+				</form>	
+			</div>	-->
+		
+			<div id="change-image-reveal" class="reveal-modal" data-reveal>
+				{% include "./zaplings/change-image-reveal.html"}
+			</div>
+		
+			<div id="edit-details-reveal" class="reveal-modal" data-reveal>
+				{% include "./zaplings/edit-details-reveal.html"}
+			</div>
+			
+	<!--		<div id="crowdtilt-reveal" class="reveal-modal" data-reveal>
+				<form id="form-crowdtilt">
+					<div class="row">
+						<div class="add-margin-bottom medium-12 columns">
+							<h3>Fund with Crowdtilt, share with Zaplings</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="medium-6 columns">
+							<p>Crowdtilt makes it easy to raise money for a project. Create a campaign, and add the link to your idea page. (Zaplings does not earn money from your campaign.)</p>
+							<p><a href="http://www.crowdtilt.com/" target="_blank">Visit Crowdtilt to start a campaign</a></p>
+							<div>Link to your campaign:</div>
+							<input id="crowdtilt-link" name="crowdtilt-link" type="text" placeholder="www.crowdtilt.com/your-project-link"/>
+							<div class="add-margin-bottom">
+								<button type="submit" class="button round small success">Save</button>
+								<button class="close-reveal-modal button round small light">Cancel</button>
+							</div>
+						</div>
+						<div class="medium-6 columns end">
+							<div class="flex-video">
+								<iframe width="560" height="315" src="//www.youtube.com/embed/2LBYdBJKDEg" frameborder="0" allowfullscreen></iframe>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div id="music-reveal" class="reveal-modal" data-reveal>
+				<form id="form-music">
+					<h3>Share your sounds</h3>
+
+					<!-- Nicko: Check user's input to ensure Embed code has bandcamp, rdio, soundcloud, or spotify in embed URL. If not, error message displays "Sorry, this embed code is not supported."  
+					<p>Copy your embed code from Soundcloud, Bandcamp, Rdio, or Spotify:</p>
+					<textarea id="music-embed" rows="2" placeholder="<iframe ..."></textarea>
+					<button type="submit" class="button round small success">Save</button>
+					<button class="close-reveal-modal button round small light">Cancel</button>
+				</form>
+			</div>-->
+		
+			<div class="push"></div>
+		</div>
+
+		{% include "./zaplings/footer.html" %}
+		
+		<script src="{% static "js/foundation.min.js" %}"></script>		
+		<script type="text/javascript">
+	  		$(document).foundation();
+		</script>
+		
+		<script type="text/javascript">
+		$(document).ready(function(){
+			var num = 1;
+			$('#add-team-member').click(function(){
+				num++;
+				$('#team-details').append('<label>Team member '+num+'</label><input type="text" name="team-user-'+num+'" id="team-user-'+num+'" placeholder="Email or Zaplings username"/><textarea id="team-intro-'+num+'" name="team-intro-'+num+'" placeholder="Describe his or her role in the team" rows="3"></textarea>');
+				return false;
+			});
+		
+			
+		//	$('.idea-cover').imagedrag();
+			
+			
+		});	
+		
+		</script>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+			var loveNum = $('#selected-loves .tag').length;
+			var offerNum = $('#selected-offers .tag').length;
+			var needNum = $('#selected-needs .tag').length;
+				$('#input-loves').keypress(function (e) {
+				var text = $(this).val();
+					if (e.which == 13 && text != '') {
+						loveNum++;
+						$('#selected-loves').val('');						
+				  		$('#selected-loves').prepend('<input id="love-suggest-'+loveNum+'" class="vis-hidden" type="checkbox" name="love-tag-new" value="'+text+'" checked><label class="tag button small light round" for="love-suggest-'+loveNum+'">'+text+'</label>');
+						e.preventDefault();	
+						$(this).focus().select();
+					}
+					else if (e.which == 13 && text == ''){
+						e.preventDefault();
+				        return false;
+					};
+				});
+				
+				$('#selected-loves').on('click', 'label', (function(){
+					$(this).toggleClass('selected').blur();
+				}));
+
+				$('#love-tags').submit(function() {
+					var values = $('#love-tags').serialize();
+				});		
+			
+				$('#input-offers').keypress(function (e) {
+					var text = $(this).val();
+					if (e.which == 13 && text != '') {
+						offerNum++;
+						$('#input-offers').val('');						
+				  		$('#selected-offers').prepend('<input id="offer-suggest-'+offerNum+'" class="vis-hidden" type="checkbox" name="offer-tag-new" value="'+text+'" checked><label class="tag button small light round" for="offer-suggest-'+offerNum+'">'+text+'</label>');
+						return false;
+						$(this).focus().select().attr("placeholder", "");
+					}
+					else if (e.which == 13 && text == ''){
+						e.preventDefault();
+				        return false;
+					};
+				});	
+				$('#selected-offers').on('click', 'label', (function(){
+					$(this).toggleClass('selected').blur();
+				}));
+
+				$('#offer-tags').submit(function() {
+					var values = $('#offer-tags').serialize();
+				});
+
+				$('#input-needs').keypress(function (e) {
+					var text = $(this).val();
+					if (e.which == 13 && text != '') {
+						needNum++;
+						$('#input-needs').val('');						
+				  		$('#selected-needs').prepend('<input id="need-suggest-'+needNum+'" class="vis-hidden" type="checkbox" name="need-tag-new" value="'+text+'" checked><label class="tag button small light round" for="need-suggest-'+needNum+'">'+text+'</label>');
+						return false;	
+						$(this).focus().select().attr("placeholder", "");
+					}
+					else if (e.which == 13 && text == ''){
+						e.preventDefault();
+				        return false;
+					};
+				});	
+
+				$('#selected-needs').on('click', 'label', (function(){
+					$(this).toggleClass('selected').blur();
+				}));
+
+				$('#need-tags').submit(function() {
+					var values = $('#need-tags').serialize();
+				});
+			});
+		</script>
+		
+		{% include "./zaplings/end-scripts.html" %}
+	</body>

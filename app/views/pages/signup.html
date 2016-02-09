@@ -1,0 +1,78 @@
+<!doctype html>
+
+{% load static %}
+
+<html class="no-js" lang="en">
+    <head>  
+    
+        {% include "./zaplings/head.html" %}
+        
+  </head>
+  <body>
+	 <div class="wrapper">
+	 	{% include "./zaplings/header.html" %}
+	  		<div class="row">
+				<div id="signup" class="medium-5 medium-offset-1 small-12 columns">
+					<h3 class="titleCenter">Sign up</h3>
+					<form id="form-signup" action="{% url 'zaplings:signup_user' %}" method="post">
+                        {% csrf_token %}
+						<input id="email" type="email" name="user-email" placeholder="Email" value="{{ signup_email }}" tabindex="1" />
+						<input id="last-name" type="text" placeholder="Last name" name="user-lastname" tabindex="3" />
+						<div class="overflow-div"><input id="first-name" type="text" placeholder="First name" name="user-firstname" tabindex="2" /></div>
+						<span class="fit-left">zaplings.com/</span>
+						<span class="input-sizer"><input id="username" type="text" placeholder="username" name="user-username" tabindex="4" /></span>
+						<input id="verify" type="password" placeholder="Verify password" name="user-password-verify" tabindex="6">
+						<div class="overflow-div"><input id="password" type="password" name="user-password" placeholder="Password" tabindex="5" /></div>
+						<span class="fit-left">Referred by:</span>
+						<span class="input-sizer"><input id="username" type="text" placeholder="Friend's username (optional)" name="user-username" tabindex="6" /></span>
+						
+						<div class="centerText">	
+							<button type="submit" class="button success round" tabindex="7">Create account</button>
+							{% if signup_status_message %}
+	                            <p id="status_message"> {{ signup_status_message }}</p>
+	                        {% endif %}
+	                    </div>
+					</form>
+				</div>
+				<div class="two-margin-top medium-5 medium-offset-1 small-12 columns end">
+					<div class="hide-for-small-only five-margin-top"></div>
+					<div class="flex-video">
+						<iframe src="https://www.youtube.com/embed/OFzXaFbxDcM?iv_load_policy=3" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</div>
+				
+				<!--<div class="vert-rule hide-for-small-only medium-1 columns">
+				</div>
+				
+				<div id="login" class="medium-5 medium-offset-1 small-12 columns end">
+					<form id="form-login" action="{% url 'zaplings:login_email_password' %}" method="post">
+                        {% csrf_token %} 
+						<h3 class="titleCenter">Log in</h3>
+						<input id="login-name" type="text" name="login-name" value="{{ login_email }}" placeholder="Email or username" tabindex="8" />
+						<input id="password" type="password" name="password" placeholder="Password" value="" tabindex="9" />
+						<div class="centerText">
+							<button type="submit" class="button success round" tabindex="10">Go</button>
+					</form>	
+						{% if login_status_message %}
+	                        <p id="status_message"> {{ login_status_message }}</p>
+	                    {% endif %}
+	                    </div>
+				</div>	-->
+			</div>
+
+			<div class="push"></div>
+		</div>
+
+			{% include "./zaplings/footer.html" %}
+
+		
+    	<script src="{% static "js/foundation.min.js" %}"></script>
+		<script type="text/javascript">
+	  		$(document).foundation();
+		</script>
+
+		{% include "./zaplings/end-scripts.html" %}
+  </body>
+</html>
+
+

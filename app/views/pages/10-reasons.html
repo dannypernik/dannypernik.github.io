@@ -1,0 +1,65 @@
+<!doctype html>
+
+{% load static %}
+
+<html class="no-js" lang="en">
+	<head>	
+	
+		{% include "./zaplings/head.html" %}
+
+	</head>
+	<body>
+		<div class="wrapper">
+			{% include "./zaplings/header.html" %}
+	  		
+			<h3 class="titleCenter">10 reasons to join Zaplings</h3>
+			<div class="row">
+				<div class="medium-8 medium-offset-2 small-12 columns">
+					<p>Our goal at Zaplings is to make it easier for you to create something new and succeed. Over the past three years, we have experienced the highs and lows of bringing an idea to life. From these challenges, a lesson has emerged: <em>Ideas must be shared to become real.</em> So many concepts have never left the minds of their inventors. If we are to change that, we need your help in building a diverse creative community. Here are 10 reasons to join:</p>
+					<p><strong>We believe in you.</strong> Some say "Creators are born, not made". We say "Creators are born <em>and</em> made". Doing business, goodness, and art are not skills reserved for some elite class - they are accessible to anyone who is willing to learn and believes they can. You can.</p>
+					<p><strong>You don't need a new idea to create.</strong> It takes a team with many strengths to bring an idea to life. Thinking a solution is only the first step. "Idea people" need collaborators inspired by their projects to help make ideas happen. Find an idea you love!</p>
+					<p><strong>One place for all your ideas, public or private.</strong> Whenever you have a moment of inspiration, write it down in your private idea book. When you are ready to share, create an idea page to seek support.</p>
+					<p><strong>Quickly introduce your idea and get feedback.</strong> Use #whoswithme for an idea you're considering, #zapling if you are ready to make it happen, or #takeitandrun to give it to the community.</p>
+					<p><strong>Introductions to your inbox.</strong> Once the community is large enough, we will suggest people to meet who share your passions and offer what you need. No more bouncing from one meetup to the next, pitching your idea to whoever will listen.</p>
+					<p><strong>Meet on your terms.</strong> Looking for help locally? Get lunch. Want to broaden your search abroad? Meet by video call. Plus, only meet the people you want to meet. Simply ignore any of our suggestions that do not interest you.</p>
+					<p><strong>Set a meeting with one click.</strong> It's amazing how much time it can take to schedule a meeting. To simplify the process, we ask your availability when you sign up and suggest something that works for each of you. If you both click "Accept", the meeting is added to your calendar.</p>
+					<p><strong>Get rewarded for making personal introductions.</strong> "Connectors" are people who introduce you to new friends and creations, and they are critical to making ideas succeed. Become a Gold Connector by making these introductions for the community, and we will help you expand your circle by introducing you to other top connectors.</p>
+					<p><strong>It's good to join early.</strong> Experience the "first mover advantage" by signing up in the beta phase. Your ideas will have less competition, you will have a head start on becoming a Gold Connector, and you will have direct input into what Zaplings becomes. Not to mention that it will make you cooler, smarter, and better looking.</p>
+					<p><strong>Zaplings is completely free.</strong> Had we not mentioned this yet? Do you really need the other 9 reasons? You've got nothing to lose. Start now!</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="medium-7 medium-offset-2 small-10 small-offset-1 columns">
+					<div id="start-options" class="add-margin-top">
+                        <form id="form-join" action="{% url 'zaplings:record_new_email' %}" method="post"> 
+                                {% csrf_token %}
+							<button id="email-submit" type="submit" class="button round success">Join Zaplings</button>
+							<div id="home-email"><input type="email" name="email" placeholder="Email"/></div>
+							<p>or <a href="{% url 'zaplings:signup' %}">Log in</a></p>
+						</form>
+						<p class="add-margin-top">Any questions? Check out our <a href="{% url "zaplings:faq" %}">FAQs</a> or ask one of your own.</p>
+					</div>
+				</div>
+			</div>
+				
+				
+		
+			<div class="push"></div>
+		</div>
+		
+		<div class="footer row full-width">
+			<div class="social-media">
+				<a href="#"><img class="social-button" src="{% static "./images/facebook-icon.png" %}" alt="Facebook"></a>
+				<a href="#"><img class="social-button" src="{% static "./images/twitter-icon.png" %}" alt="Twitter"></a>
+				<a href="#"><img class="social-button" src="{% static "./images/linkedin-icon.png" %}" alt="LinkedIn"></a>
+			</div>	
+		</div>	
+			
+	    <script src="{% static "js/foundation.min.js" %}"></script>	
+		<script type="text/javascript">
+	  		$(document).foundation();
+		</script>
+
+		{% include "./zaplings/end-scripts.html" %}
+	</body>
+</html>

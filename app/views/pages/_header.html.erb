@@ -1,0 +1,72 @@
+<header class="row header hide-for-small-only full-width">
+	<div class="header-left medium-7 medium-offset-1 columns">
+		<a href="{% url "zaplings:index" %}"><%= image_tag "header-logo", :class => "headerLogo", :size => "101x49", :alt => "Zaplings" %></a>
+		<button data-reveal-id="idea-preview-reveal" class="new-idea button small round">Let's do something.</button>
+	</div>
+</header>
+
+<header class="row header-small show-for-small-only full-width">
+	<div id="header-left-small" class="header-left small-12 show-for-small-only columns">
+		<a href="{% url "zaplings:index" %}"><%= image_tag "header-logo-small", :id => "logo-small", :class => "headerLogo", :size => "81x40", :alt => "Zaplings" %></a>
+		<button data-reveal-id="idea-preview-reveal" class="small-new-idea button tiny round">Let's do something.</button>
+	</div>
+</header>
+
+<!--	<div class="header-menu large-3 medium-4 hide-for-small-only columns end">
+	    <ul class="top-level-menu">
+		    <li>
+		        <a href="#">Menu <span class="arrow-down"></span></a>
+		        <ul class="second-level-menu">
+		        <!--    <li><a href="#">My ideas</a></li>
+		            <li><a href="{% url 'zaplings:generate_profile' %}">My profile</a></li>
+		        <!--    <li><a href="#">Idea feed</a></li>
+		            <li>
+		                <a href="#">Learn more</a>
+		                <ul class="third-level-menu">
+		                    <li><a href="{% url 'zaplings:howitworks' %}">How it works</a></li>
+		            <li><a href="{% url 'zaplings:10-reasons' %}">10 reasons to join</a></li>
+		            <li><a href="{% url 'zaplings:faq' %}">FAQs</a></li>
+		            <!--<li><a href="{% url 'zaplings:getinvolved' %}">Get involved</a></li>
+		            <li><a href="{% url "zaplings:user_logout" %}">Log out</a></li>
+
+		        </ul>
+		    </li>
+		</ul>
+	</div>	
+
+	<nav id="nav" role="navigation" class="show-for-small-only rightText">
+	    <a href="#nav" title="Show menu"><img id="three-lines" src="{% static "./images/three-lines.png" %}" height="32px" width="32px"/></a>
+	    <a href="#" title="Hide menu"><img id="three-lines" src="{% static "./images/three-lines.png" %}" height="32px" width="32px"/></a>
+			<ul>
+				<li><a href="#">My ideas</a></li>
+		        <li><a href="{% url 'zaplings:profile-view' %}">My profile</a></li>
+				<li><a href="#">Idea feed</a></li>
+		    	<li>
+		    		<a href="#" aria-haspopup="true">Learn more</a>
+		    			<ul>
+					    	<li><a href="{% url 'zaplings:howitworks' %}">How it works</a></li>
+				            <li><a href="{% url 'zaplings:10-reasons' %}">10 reasons to join</a></li>
+				            <li><a href="{% url 'zaplings:faq' %}">FAQs</a></li>
+							<li><a href="{% url 'zaplings:getinvolved' %}">Get involved</a></li>
+						</ul>
+				</li>
+		    	<li><a href="{% url "zaplings:user_logout" %}">Log out</a></li>
+			</ul>
+	</nav>
+
+-->
+
+</header>
+
+<div id="idea-preview-reveal" class="reveal-modal" data-reveal>
+	<div class="row">
+		<div class="medium-8 medium-offset-2 columns end">
+			<h3 class="centerText">Ideas grow soon!</h3>
+			<p>Over the coming months, we will release several features to help you share ideas, including:</p>
+			<p><strong>Your private idea book.</strong> Keep all your ideas in one place, and easily share them whenever you wish.</p>
+			<p><strong>Public idea pages.</strong> When you are ready to create, complete an idea page to give more detail and seek support.</p>
+			<p><strong>Community idea feed.</strong> Get inspired by the great ideas other users share, and find one you'd like to help grow.</p>
+			<div class="centerText"><button class="close-reveal-modal button round success">Got it</button></div>
+		</div>
+	</div>	
+</div>

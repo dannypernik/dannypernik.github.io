@@ -1,0 +1,92 @@
+<!doctype html>
+
+{% load static %}
+
+<html class="no-js" lang="en">
+    <head>  
+    
+        {% include "./zaplings/head.html" %}
+    
+    </head>
+    <body>
+          <!-- AddThisEvent -->
+        <script type="text/javascript" src="https://addthisevent.com/libs/1.5.8/ate.min.js"></script>
+        <div class="wrapper">
+
+            {% include "./zaplings/header.html" %}
+              
+            <h2 class="content-title">See you there!</h2>
+            <p class="centerText">
+                        <a href="http://www.zaplings.com/creatorsnight" title="Add to Calendar" class="addthisevent button small round success">
+                        add to calendar
+                        <span class="_start">04-29-2015 18:30:00</span>
+                        <span class="_end">04-29-2015 21:30:00</span>
+                        <span class="_zonecode">11</span>
+                        <span class="_summary">Zaplings presents Creators' Night</span>
+                        <span class="_description">Let's celebrate what we create, inspire new creations, and meet people to create with.<br>
+                        Featured musician, artist, startup, nonprofit, photographer and videographer at each event.<br>
+                        RSVP is required to attend at zaplings.com/creatorsnight</span>
+                        <span class="_location">WeWork, 14th floor of 600 N Congress, Austin, TX 78701</span>
+                        <span class="_organizer">Zaplings</span>
+                        <span class="_organizer_email">danny@zaplings.com</span>
+                        <span class="_facebook_event"></span>
+                        <span class="_all_day_event">false</span>
+                        <span class="_date_format">MM/DD/YYYY</span>
+                        </a>
+                    </p>
+            <div class="row">
+                <div class="medium-8 medium-offset-2 columns">
+                    <p>We're excited you'll be joining us. Look for an email in the coming days with all the details, and feel free to forward it to friends who might be interested. Alternatively, copy and paste (or edit) the invitation message below. 
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="medium-8 medium-offset-2 columns">
+                <textarea rows="4" id="invite-msg" name="invite">Want to come to Creators' Night on Weds. April 29 at WeWork? Featured music, art, startup, and nonprofit, 5-min mic time, and idea contest! 6:30-9:30pm on the 14th floor of 600 N Congress. Rsvp required: www.zaplings.com/creatorsnight</textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="centerText medium-8 medium-offset-2 small-12 columns add-margin-bottom">
+                    <button id="copy-invite" data-text-swap="copied" data-clipboard-target="invite-msg" class="button round small">copy text</button>
+                    <!--<a href="{% url 'zaplings:creatorsnight' %}"><button id="copy-invite" class="button large round success">RSVP Form</button></a>-->
+                    <!-- facebook sdk -->
+                    <!-- post_to_facebook 'http://zaplings.com:8080/creatorsnight/' "Post to Facebook!" -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="medium-8 medium-offset-2 columns centerText">
+                <p class="centerText">Or share these...</p>
+                <p>
+                    <a href="https://www.facebook.com/events/390138201177814/" target="_blank"><button class="button small round light half-margin-right">facebook event</button></a>
+                    <a href="http://do512.com/events/2015/4/29/creators-night" target="_blank"><button class="button small round light half-margin-right">view do512</button></a>
+                    <a href="http://www.meetup.com/creatorsnight/" target="_blank"><button class="button small light round">meetup group</button></a>
+                    </p>
+                </div>
+            </div>
+            <div class="push"></div>
+        </div>
+        
+        {% include "./zaplings/footer.html" %}
+            
+        <script src="{% static "js/foundation.min.js" %}"></script>    
+        <script type="text/javascript">
+              $(document).foundation();
+        </script>
+        <script type="text/javascript">
+            addthisevent.settings({
+                mouse        : false,
+                css            : false,
+                outlook        : {show:true, text:"Outlook Calendar"},
+                google        : {show:true, text:"Google Calendar"},
+                yahoo        : {show:true, text:"Yahoo Calendar"},
+                ical        : {show:true, text:"iCal Calendar"},
+                hotmail        : {show:true, text:"Hotmail Calendar"},
+                facebook    : {show:true, text:"Facebook Calendar"}
+            });
+        </script>
+        <script src="{% static "./zeroclipboard-master/dist/ZeroClipboard.min.js" %}"></script>
+        <script src="{% static "./js/copy2.js" %}"></script>
+        
+        {% include "./zaplings/end-scripts.html" %}
+    </body>
+</html>

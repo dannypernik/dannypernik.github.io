@@ -1,0 +1,75 @@
+<!doctype html>
+
+{% load static %}
+
+<html class="no-js" lang="en">
+	<head>	
+	
+		{% include "./zaplings/head.html" %}
+
+		<script src="{% static "./js/jquery.selectric.min.js" %}"></script>	
+	</head>
+	<body>
+	  
+		<div class="wrapper">
+
+			{% include "./zaplings/header.html" %}
+
+			<div class="row full-width">
+				<div class="list-heading large-7 large-offset-2 medium-8 medium-offset-1 small-6 columns">
+					<h3>Idea seeds</h3>
+				</div>
+<!--				<div id="idea-filter" class="list-heading large-1 medium-2 small-5 columns end">
+
+				<!-- I need to look into getting filters to work
+					<select>
+						<option value="all">All</option>
+						<option value="zapling">zapling</option>
+						<option value="whoswithme">whoswithme</option>
+						<option value="takeitandrun">takeitandrun</option>
+					</select>
+				</div>-->
+			</div>
+			<div class="row full-width">
+				<div class="large-8 large-offset-2 medium-10 medium-offset-1 columns end">
+					<ul class="idea-feed">
+						<li>
+					<!-- Needs idea variables and link to idea page -->
+
+							<div class="idea-feed-content">
+								<a href="#">
+									<img class="hide-for-small-only idea-feed-img" src="{% static "./images/leaf-circle.png" %}" height="75px" width="75px">
+									<img class="show-for-small-only idea-feed-img-small" src="{% static "./images/leaf-circle.png" %}" height="60px" width="60px">
+								</a>
+								<div class="overflow-div">
+	              					<a class="no-decoration idea-feed-text" href="#"><h5 class="idea-feed-title">Bam's Brussel Sprouts 25ch</h5>
+	             					<p class="idea-feed-description">A short sweet slogan goes here. (50 character max) A short sweet slogan goes here (50 character max)</p></a>
+		             				<a href="#">username</a>
+		             				<span>&nbsp;&nbsp;<a href="#">discussion</a></span>
+								</div>
+							</div>
+						</li>
+						
+					</ul>
+				</div>	
+			</div>
+
+			<div class="push"></div>
+		</div>
+
+			{% include "./zaplings/footer.html" %}
+	    
+	    <script src="{% static "js/foundation.min.js" %}"></script>
+		<script type="text/javascript">
+	  		$(document).foundation();
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('select').selectric()
+			});
+		</script>
+
+		<script type="text/javascript" src="{% static "./js/filters.js" %}"></script>
+		{% include "./zaplings/end-scripts.html" %}
+	</body>
+</html>

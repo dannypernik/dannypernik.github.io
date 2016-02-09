@@ -1,0 +1,71 @@
+<!doctype html>
+
+{% load static %}
+
+<html class="no-js" lang="en">
+  <head>  
+  
+    {% include "./zaplings/head.html" %}
+    <script src="{% static "./js/prefixfree.min.js" %}"></script>
+    <script src="{% static "./js/jquery.selectric.min.js" %}"></script>
+
+  </head>
+  <body>
+      <div class="wrapper">
+        
+        {% include "./zaplings/header.html" %}
+
+          <h2 class="titleCenter">Where would you like to meet?</h2>
+          <form action="{% url "zaplings:record_wheres" %}" method="post"> <!-- form interaction goes here -->
+              {% csrf_token %}
+              <div class="row">
+                <div class="centerText medium-7 small-centered columns">
+                  <input type="checkbox" name="meet-local" id="checkbox-meet-local"> 
+                  <span>Meet </span>
+                    <input type="text" name="radius" id="select-distance" value="25" placeholder="(5-99)"/>
+                  <span>miles from</span>
+                  <input type="text" name="zipcode" id="text-zip-code" placeholder="zip code"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="centerText medium-7 small-centered columns">
+                  <span class="checkbox-indent">at</span>
+                  <input type="text" name="place" id="text-favorite-spot" placeholder="your favorite place"/><!-- </span> --> 
+                  <!-- this element appears to not have a matching <span> before the closing tag -->
+                </div>
+              </div>
+              <div class="row meet-anywhere">
+                <div class="centerText medium-7 small-centered columns">
+                  <input type="checkbox" name="hangout" id="meet-by-video-call"><span>Meet people around the world by video call</span>
+                </div>
+              </div>
+          <div class="row next">
+            <div class="column small-12 text-center">
+              <br> <!-- shameful spacing hack, fix this ~MC -->
+              <button type="submit" class="button success round small">Next: When can you meet?</button>
+            </div>
+          </div>
+        </form>
+        <div class="push"></div>
+      </div>
+      {% include "./zaplings/footer.html" %}
+
+    <script src="js/foundation.min.js"></script>
+    <script type="text/javascript">
+      $(document).foundation();
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('select').selectric()
+      });
+    </script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+    <script type="text/javascript">
+      var input = document.getElementById('text-favorite-spot');
+      var options = { types: ['establishment'] };
+      autocomplete = new google.maps.places.Autocomplete(input, options);
+    </script>
+
+    {% include "./zaplings/end-scripts.html" %}
+  </body>
+</html>

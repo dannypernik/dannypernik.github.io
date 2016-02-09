@@ -1,0 +1,156 @@
+<!doctype html>
+
+{% load static %}
+
+<html class="no-js" lang="en">
+  <head>  
+  
+    {% include "./zaplings/head.html" %}      <script src="{% static "./js/prefixfree.min.js" %}"></script>
+
+  </head>
+    <body>
+      <div class="wrapper">
+        {% include "./zaplings/header.html" %}
+
+        <div class="row when week">
+          <div class="column small-12 medium-10 large-8 small-centered text-center">
+            <h2 class="titleCenter">When would you like to meet?</h2>
+            <form action="{% url "zaplings:record_whens" %}" class="when custom" method="post"> 
+            {% csrf_token %}
+            <!-- form interaction goes here -->
+            <div class="times-general">
+              <div class="row weekdays-or-weekends">
+                <input type="checkbox" name="weekdays" id="weekdays" value="weekdays" class="hide"><label for="weekdays" class="button small light round">weekdays</label>
+                <input type="checkbox" name="weekends" id="weekends" value="weekends" class="hide"><label for="weekends" class="button small light round">weekends</label>
+              </div>
+              <div class="row time-of-day">
+                <div class="column small-8 medium-12 small-centered">
+                  <input type="checkbox" name="mornings" id="mornings" value="mornings" class="hide"><label for="mornings" class="button small light round">mornings</label>
+                  <input type="checkbox" name="afternoons" id="afternoons" value="afternoons" class="hide"><label for="afternoons" class="button small light round">afternoons</label>
+                  <input type="checkbox" name="evenings" id="evenings" value="evenings" class="hide"><label for="evenings" class="button small light round">evenings</label>
+                  <input type="checkbox" name="nights" id="nights" value="nights" class="hide"><label for="nights" class="button small light round">nights</label>
+
+                </div>
+              </div>
+              <hr>
+            </div>
+            <div class="row times-specific">
+              <div class="column small-12 medium-9 small-centered">
+                <!-- table>thead>tr>td*8^^+tr*4>td>input*2^+td*7>input:checkbox -->
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Start to End</td>
+                      <td>M</td>
+                      <td>Tu</td>
+                      <td>W</td>
+                      <td>Th</td>
+                      <td>F</td>
+                      <td>Sat</td>
+                      <td>Sun</td>
+                    </tr>
+                  </thead>
+                  <tr>
+                    <td>
+                      <div class="row">
+                        <div class="column small-6"><input type="text" class="start-time" placeholder="9a"></div>
+                        <div class="column small-6"><input type="text" class="end-time" placeholder="12p"></div>
+                      </div>
+                    </td>
+                    <td><input type="checkbox" name="m-morning" id="m-morning" class="weekday morning"></td>
+                    <td><input type="checkbox" name="tu-morning" id="tu-morning" class="weekday morning"></td>
+                    <td><input type="checkbox" name="w-morning" id="w-morning" class="weekday morning"></td>
+                    <td><input type="checkbox" name="th-morning" id="th-morning" class="weekday morning"></td>
+                    <td><input type="checkbox" name="f-morning" id="f-morning" class="weekday morning"></td>
+                    <td><input type="checkbox" name="sat-morning" id="sat-morning" class="weekend morning"></td>
+                    <td><input type="checkbox" name="sun-morning" id="sun-morning" class="weekend morning"></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="row">
+                        <div class="column small-6"><input type="text" class="start-time" placeholder="12p"></div>
+                        <div class="column small-6"><input type="text" class="end-time" placeholder="5p"></div>
+                      </div>
+                    </td>
+                    <td><input type="checkbox" name="m-afternoon" id="m-afternoon" class="weekday afternoon"></td>
+                    <td><input type="checkbox" name="tu-afternoon" id="tu-afternoon" class="weekday afternoon"></td>
+                    <td><input type="checkbox" name="w-afternoon" id="w-afternoon" class="weekday afternoon"></td>
+                    <td><input type="checkbox" name="th-afternoon" id="th-afternoon" class="weekday afternoon"></td>
+                    <td><input type="checkbox" name="f-afternoon" id="f-afternoon" class="weekday afternoon"></td>
+                    <td><input type="checkbox" name="sat-afternoon" id="sat-afternoon" class="weekend afternoon"></td>
+                    <td><input type="checkbox" name="sun-afternoon" id="sun-afternoon" class="weekend afternoon"></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="row">
+                        <div class="column small-6"><input type="text" class="start-time" placeholder="5p"></div>
+                        <div class="column small-6"><input type="text" class="end-time" placeholder="9p"></div>
+                      </div>
+                    </td>
+                    <td><input type="checkbox" name="m-evening" id="m-evening" class="weekday evening"></td>
+                    <td><input type="checkbox" name="tu-evening" id="tu-evening" class="weekday evening"></td>
+                    <td><input type="checkbox" name="w-evening" id="w-evening" class="weekday evening"></td>
+                    <td><input type="checkbox" name="th-evening" id="th-evening" class="weekday evening"></td>
+                    <td><input type="checkbox" name="f-evening" id="f-evening" class="weekday evening"></td>
+                    <td><input type="checkbox" name="sat-evening" id="sat-evening" class="weekend evening"></td>
+                    <td><input type="checkbox" name="sun-evening" id="sun-evening" class="weekend evening"></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="row">
+                        <div class="column small-6"><input type="text" class="start-time" placeholder="9p"></div>
+                        <div class="column small-6"><input type="text" class="end-time" placeholder="12a"></div>
+                      </div>
+                    </td>
+                    <td><input type="checkbox" name="m-night" id="m-night" class="weekday night"></td>
+                    <td><input type="checkbox" name="tu-night" id="tu-night" class="weekday night"></td>
+                    <td><input type="checkbox" name="w-night" id="w-night" class="weekday night"></td>
+                    <td><input type="checkbox" name="th-night" id="th-night" class="weekday night"></td>
+                    <td><input type="checkbox" name="f-night" id="f-night" class="weekday night"></td>
+                    <td><input type="checkbox" name="sat-night" id="sat-night" class="weekend night"></td>
+                    <td><input type="checkbox" name="sun-night" id="sun-night" class="weekend night"></td>
+                  </tr>
+                </table>
+              </div>
+              <!-- <hr> -->
+            </div>
+            <!--<div class="row">
+              <div class="column small-12 small-centered">
+                <input type="checkbox" name="checkbox-get-more-specific" id="checkbox-get-more-specific" class="hide"><label for="checkbox-get-more-specific" id="label-get-more-specific" class="button small light round">Get more specific</label>
+              </div>
+            </div>-->
+            <hr>
+            <div class="row when my-timezone">
+              <div class="small-6 small-offset-3 columns end">
+              <span>My time zone:</span>
+              <select name="timezone" id="select-my-timezone">
+                <option value="WDT">US Western Time</option>
+                <option value="MDT">US Mountain Time</option>
+                <option value="CDT">US Central Time</option>
+                <option value="EDT">US Eastern Time</option>
+              </select>
+              <!--<a href="" class="button small round success">next</a>-->
+              <button type="submit" class="button success round small">Next: Go to profile!</button>
+         </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="push"></div>
+    </div>
+    
+    {% include "./zaplings/footer.html" %}
+
+    <script src="{% static "./js/jquery.selectric.min.js" %}"></script>
+    <script src="{% static "./js/foundation.min.js" %}"></script>
+    <script src="{% static "./js/when.js" %}"></script>
+    <script type="text/javascript">
+    $(document).foundation();
+    $(document).ready(function(){
+      $('select').selectric()
+    });
+    </script>
+    
+    {% include "./zaplings/end-scripts.html" %}
+  </body>
+</html>

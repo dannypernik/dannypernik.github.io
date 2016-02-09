@@ -1,0 +1,72 @@
+<!doctype html>
+
+{% load static %}
+
+<html class="no-js" lang="en">
+  <head>  
+  
+    {% include "./zaplings/head.html" %}
+    </head>
+    <body>
+      <div class="wrapper">
+        {% include "./zaplings/header.html" %}
+        
+        <div class="row full-width">
+          <div class="list-heading medium-3 medium-offset-2 small-5 columns">
+            <h3>My ideas</h3>
+          </div>
+          <div class="rightText list-heading medium-5 small-7 columns end">
+            <a href="{% url "zaplings:newidea" %}"><button id="add-idea" class="button round success">Add new</button></a>
+          </div>
+        </div>
+
+        <div class="row full-width">
+          <div class="medium-8 medium-offset-2 columns">
+            <ul class="idea-feed">
+              <li>
+            <!-- Needs idea variables and link to idea page -->
+            {% static "images/" as images %}
+            {% for idea in myideas %}
+                <div class="idea-feed-content">
+                    {% if idea.haspage %}
+                    <a href="{% url "zaplings:edit-idea-page" %}">
+                    {% else %}
+                    <a href="{% url "zaplings:newidea" %}">
+                    {% endif %}
+                    <img class="hide-for-small-only idea-feed-img" src="{{images}}idea-{{idea.id}}.png" height="75px" width="75px">
+                    <img class="show-for-small-only idea-feed-img-small" src="{{images}}idea-{{idea.id}}.png" height="60px" width="60px">
+                  </a>
+                  <div class="overflow-div">
+                  <!-- if idea has idea page -->
+                    {% if idea.haspage %}
+                    <a class="no-decoration idea-feed-text" href="{% url "zaplings:edit-idea-page" %}">
+                    {% else %}
+                    <a href="{% url "zaplings:newidea" %}" class="no-decoration idea-feed-text">
+                    {% endif %}
+                    <h5 class="idea-feed-title">{{ idea.title }}</h5>
+                    <p class="idea-feed-description">{{ idea.description }}</p></a>
+                  </div>
+                </div>
+              {% endfor %}
+              </li>
+            </ul>
+          </div>       
+        </div>
+
+        <div id="edit-details-reveal" class="reveal-modal" data-reveal>
+          {% include "./zaplings/edit-details-reveal.html" %}
+        </div>
+        
+        <div class="push"></div>
+      </div>
+      
+      {% include "./zaplings/footer.html" %}
+
+      <script src="js/foundation.min.js"></script>
+      <script type="text/javascript">
+      $(document).foundation();
+      </script>
+      
+      {% include "./zaplings/end-scripts.html" %}
+    </body>
+  </html>
